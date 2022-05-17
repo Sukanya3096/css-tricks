@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" async defer></script>
+  </head>
+  <body>
+    <div class="toggle_button">
+      <input type="checkbox" id="toggle" onClick="changeMode(this)" />
+      <label for="toggle"></label>
+    </div>
+    <div class="center-sunny">
+      <div class="cloud"></div>
+      <ul class="sun">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <script>
+      function changeMode(e) {
+        const div = document.querySelectorAll("div")[1];
+        const dayNight = document.querySelector("ul");
+
+        let divRains = document.createElement("div");
+        divRains.classList.add("rain");
+
+        let divRains1 = document.createElement("div");
+        divRains1.classList.add("rain", "one");
+
+        let divRains2 = document.createElement("div");
+        divRains2.classList.add("rain", "two");
+
+        let divRains3 = document.createElement("div");
+        divRains3.classList.add("rain", "three");
+
+        let divRains4 = document.createElement("div");
+        divRains4.classList.add("rain", "four");
+
+        let divRains5 = document.createElement("div");
+        divRains5.classList.add("rain", "five");
+
+        let divRains6 = document.createElement("div");
+        divRains6.classList.add("rain", "six");
+
+        let divRains7 = document.createElement("div");
+        divRains7.classList.add("rain", "seven");
+
+        if (e.checked) {
+          document.body.style.backgroundColor = "rgb(25 24 24)";
+          if (document.querySelectorAll("div")[1].className == "center-sunny") {
+            div.classList.remove("center-sunny");
+            div.classList.add("center-rainy");
+
+            console.log(dayNight);
+            dayNight.style.display = "none";
+
+            div.appendChild(divRains);
+            div.appendChild(divRains1);
+            div.appendChild(divRains2);
+            div.appendChild(divRains3);
+            div.appendChild(divRains4);
+            div.appendChild(divRains5);
+            div.appendChild(divRains6);
+            div.appendChild(divRains7);
+          }
+        } else {
+          div.classList.remove("center-rainy");
+          div.classList.add("center-sunny");
+          document.body.style.backgroundColor = "skyblue";
+          dayNight.style.display = "block";
+          let divRain = document.getElementsByClassName("rain");
+          console.log(divRain);
+          [...divRain].forEach((element) => {
+            element.remove();
+          });
+          divRain[0].remove();
+        }
+      }
+    </script>
+  </body>
+</html>
